@@ -78,11 +78,22 @@ WSGI_APPLICATION = 'dti.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': '/etc/mysql/db_dti.cnf',
-        },
+        'HOST': 'localhost',
+        'NAME': 'ti',
+        'USER': 'JFQ',
+        'PASSWORD': 'Surg@s2014',
+        'PORT': '3306',
     }
 }
+
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'OPTIONS': {
+#            'read_default_file': 'G:\\tmp\\venv\\Scripts\\db_dti.cnf',
+#        },
+#    }
+# }
 
 
 # Password validation

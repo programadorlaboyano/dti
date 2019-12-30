@@ -7,10 +7,11 @@ class TiComputer(models.Model):
     idcomputer = models.AutoField(primary_key=True)
     cp_name = models.CharField(max_length=45)
     cp_description = models.TextField()
-    cp_licence_windows = models.CharField(max_length=30)
-    cp_licence_office = models.CharField(max_length=30)
+    cp_licence_windows = models.CharField(max_length=50)
+    cp_licence_office = models.CharField(max_length=50)
+    id_computer_brand = models.ForeignKey('TiBrand', models.DO_NOTHING, db_column='id_computer_brand')
     id_tower = models.ForeignKey('TiTower', models.DO_NOTHING, db_column='id_tower')
-    id_display = models.ForeignKey('TiDisplay', models.DO_NOTHING, db_column='id_display')
+    id_monitor = models.ForeignKey('TiMonitor', models.DO_NOTHING, db_column='id_monitor')
     id_keyboard = models.ForeignKey('TiKeyboard', models.DO_NOTHING, db_column='id_keyboard')
     id_mouse = models.ForeignKey('TiMouse', models.DO_NOTHING, db_column='id_mouse')
     id_operating_system = models.ForeignKey('TiOperatingSystem', models.DO_NOTHING, db_column='id_operating_system')
@@ -22,20 +23,20 @@ class TiComputer(models.Model):
         db_table = 'ti_computer'
 
 
-class TiDisplay(models.Model):
-    iddisplay = models.AutoField(primary_key=True)
-    id_display_trademark = models.IntegerField()
-    display_resolution = models.CharField(max_length=50)
-    display_reference = models.CharField(max_length=50)
-    display_serial = models.CharField(max_length=50)
+class TiMonitor(models.Model):
+    idmonitor = models.AutoField(primary_key=True)
+    id_monitor_brand = models.ForeignKey('TiBrand', models.DO_NOTHING, db_column='id_monitor_brand')
+    monitor_size = models.FloatField()
+    monitor_reference = models.CharField(max_length=50)
+    monitor_serial = models.CharField(max_length=50)
 
     class Meta:
-        db_table = 'ti_display'
+        db_table = 'ti_monitor'
 
 
 class TiKeyboard(models.Model):
     idkeyboard = models.AutoField(primary_key=True)
-    id_kb_trademark = models.IntegerField()
+    id_kb_brand = models.ForeignKey('TiBrand', models.DO_NOTHING, db_column='id_kb_brand')
     kb_reference = models.CharField(max_length=50)
     kb_serial = models.CharField(max_length=50)
 
@@ -45,7 +46,7 @@ class TiKeyboard(models.Model):
 
 class TiMouse(models.Model):
     idmouse = models.AutoField(primary_key=True)
-    id_mouse_trademark = models.IntegerField()
+    id_mouse_brand = models.ForeignKey('TiBrand', models.DO_NOTHING, db_column='id_mouse_brand')
     mouse_reference = models.CharField(max_length=50)
     mouse_serial = models.CharField(max_length=50)
 
@@ -97,7 +98,7 @@ class TiTower(models.Model):
     tower_reference = models.CharField(max_length=50)
     tower_serial = models.CharField(max_length=50)
     id_type = models.IntegerField()
-    id_tower_trademark = models.IntegerField()
+    id_tower_brand = models.ForeignKey('TiBrand', models.DO_NOTHING, db_column='id_tower_brand')
     id_processor = models.IntegerField()
     id_hard_disk = models.IntegerField()
     id_ram = models.IntegerField(db_column='id_RAM')  # Field name made lowercase.
@@ -106,3 +107,11 @@ class TiTower(models.Model):
 
     class Meta:
         db_table = 'ti_tower'
+
+
+class TiBrand(models.Model):
+    idti_brand = models.AutoField(primary_key=True)
+    brand_name = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'ti_brand'
