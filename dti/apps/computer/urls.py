@@ -12,6 +12,7 @@ router.register(r'os', OperatingSystemViewSet)
 router.register(r'positions', PositionViewSet)
 router.register(r'responsible', ResponsibleViewSet)
 router.register(r'towers', TowerViewSet)
+router.register(r'brands', BrandViewSet)
 
 
 urlpatterns = [

@@ -55,3 +55,9 @@ class TowerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = TiTower
         fields = '__all__'
+
+
+class BrandSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = TiBrand
+        fields = '__all__'

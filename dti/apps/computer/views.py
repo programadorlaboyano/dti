@@ -30,7 +30,7 @@ class OfficeViewSet(viewsets.ModelViewSet):
 
 class OperatingSystemViewSet(viewsets.ModelViewSet):
     queryset = TiOperatingSystem.objects.all()
-    serializer_class = OfficeSerializer
+    serializer_class = OperatingSystemSerializer
 
 
 class PositionViewSet(viewsets.ModelViewSet):
@@ -46,3 +46,8 @@ class ResponsibleViewSet(viewsets.ModelViewSet):
 class TowerViewSet(viewsets.ModelViewSet):
     queryset = TiTower.objects.all()
     serializer_class = TowerSerializer
+
+
+class BrandViewSet(viewsets.ModelViewSet):
+    queryset = TiBrand.objects.all()
+    serializer_class = BrandSerializer

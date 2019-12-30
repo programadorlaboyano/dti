@@ -81,6 +81,9 @@ class TiPosition(models.Model):
     class Meta:
         db_table = 'ti_position'
 
+    def __str__(self):
+        return self.position_description
+
 
 class TiResponsible(models.Model):
     idti_responsible = models.AutoField(primary_key=True)
@@ -115,3 +118,6 @@ class TiBrand(models.Model):
 
     class Meta:
         db_table = 'ti_brand'
+
+    def __str__(self):
+        return self.brand_name
